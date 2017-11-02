@@ -43,9 +43,9 @@ D_a6=0;
 deltaQ=[D_th1;D_th2;D_th3;D_th4;D_th5;D_th6;D_bt1;D_bt2;D_bt3;D_bt4;D_bt5;D_bt6;D_a1;D_a2;D_a3;D_a4;D_a5;D_a6;D_d1;D_d2;D_d3;D_d4;D_d5;D_d6];
 % deltaQ=[D_th2;D_th3;D_th4;D_th5;D_bt1;D_bt2;D_bt3;D_bt4;D_bt5;D_a1;D_a2;D_a3;D_a4;D_a5;D_a6;D_d2;D_d3;D_d5;D_d6];
 % 
-E=zeros(30,1);
+E=zeros(27,1);
 %th=[-177:14:177];
-th=zeros(10,6);
+th=zeros(28,6);
 th(1,:)=[-10 -100 -20 -30 -40 -50];
 th(2,:)=[10 -80 20 30 40 50];
 th(3,:)=[20 -70 30 40 50 60];
@@ -56,28 +56,88 @@ th(7,:)=[60 -30 70 80 100 110];
 th(8,:)=[70 -25 60 50 40 30];
 th(9,:)=[80 -20 70 50 60 80];
 th(10,:)=[100 -10 90 80 70 60];
+th(11,:)=[30 -40 60 70 80 90];
+th(12,:)=[110 -80 90 80 60 70];
+th(13,:)=[120 -100 -50 80 30 40];
+th(14,:)=[130 -110 -80 -70 -60 -50];
+th(15,:)=[140 -120 -100 -80 -70 -60];
+th(16,:)=[150 -130 -110 -100 -80 -70];
+th(17,:)=[160 -140 -130 -80 -60 -50];
+th(18,:)=[-20 100 -30 -30 -30 -30];
+th(19,:)=[-30 110 -40 -40 -40 -40];
+th(20,:)=[-40 120 -50 -50 -50 -50];
+th(21,:)=[-50 130 -60 -60 -60 -60];
+th(22,:)=[-60 140 -70 -70 -70 -70];
+th(23,:)=[-70 150 -80 -80 -80 -80];
+th(24,:)=[-80 160 -100 -100 -100 -100];
+th(25,:)=[-100 50 30 40 50 60];
+th(26,:)=[-110 60 40 40 40 40];
+th(27,:)=[-120 70 50 50 50 50];
+th(28,:)=[-130 80 60 60 60 60];
 
 
 
-J=zeros(30,24);
 
-for i=1:1:10
-    th6=th(i,:);
-    T16R=F_T16R(th6);
-    T16N=F_T16N(th6);
-    E((i-1)*3+1)=T16R(1,4)-T16N(1,4);
-    E((i-1)*3+2)=T16R(2,4)-T16N(2,4);
-    E((i-1)*3+3)=T16R(3,4)-T16N(3,4);
+J=zeros(27,24);
+
+for i=1:1:27
+    th6=th(i,:)
+    T16R_A=F_T16R(th6)
+    T16N_A=F_T16N(th6)
     
-    J((i-1)*3+1,:)=F_J_x(th6);
-    J((i-1)*3+2,:)=F_J_y(th6);
-    J((i-1)*3+3,:)=F_J_z(th6);
+    Jax=F_J_x(th6)
+    Jay=F_J_y(th6)
+    Jaz=F_J_z(th6)
+    
+    Ja=[Jax;Jay;Jaz]
+    
+    AxN=T16N_A(1,4)
+    AyN=T16N_A(2,4)
+    AzN=T16N_A(3,4)
+    
+    AxR=T16R_A(1,4)
+    AyR=T16R_A(2,4)
+    AzR=T16R_A(3,4)  
+    
+    th6=th(i+1,:)
+    T16R_B=F_T16R(th6)
+    T16N_B=F_T16N(th6)
+   
+    Jbx=F_J_x(th6)
+    Jby=F_J_y(th6)
+    Jbz=F_J_z(th6)
+    
+    Jb=[Jbx;Jby;Jbz]
+    
+    BxN=T16N_B(1,4)
+    ByN=T16N_B(2,4)
+    BzN=T16N_B(3,4)
+    
+    BxR=T16R_B(1,4)
+    ByR=T16R_B(2,4)
+    BzR=T16R_B(3,4)
+    
+    ABN=sqrt((AxN-BxN)^2+(AyN-ByN)^2+(AzN-BzN)^2)
+    ABR=sqrt((AxR-BxR)^2+(AyR-ByR)^2+(AzR-BzR)^2)
+    
+    E(i)=ABN-ABR
+    AB_D_AB=[(BxN-AxN)/ABN (ByN-AyN)/ABN (BzN-AzN)/ABN];
+    size(AB_D_AB)
+    size(Jb-Ja)
+    Ji=AB_D_AB*(Ja-Jb);
+    J(i,:)=Ji;
+%     E((i-1)*3+1)=T16R(1,4)-T16N(1,4);
+%     E((i-1)*3+2)=T16R(2,4)-T16N(2,4);
+%     E((i-1)*3+3)=T16R(3,4)-T16N(3,4);
+%     J((i-1)*3+1,:)=F_J_x(th6);
+%     J((i-1)*3+2,:)=F_J_y(th6);
+%     J((i-1)*3+3,:)=F_J_z(th6);
 end
-E
+
 delta=J*deltaQ
 detltaQ1=J\E
 deltaQ
-% detltaQ1=inv(J.'*J)*(J.')*E
+detltaQ1=inv(transpose(J)*J)*transpose(J)*E
 
 
 % for  i=1:1:24
