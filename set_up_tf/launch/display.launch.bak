@@ -1,0 +1,7 @@
+<launch>
+	<param name="robot_description" textfile="/home/alex/catkin_ws/src/set_up_tf/urdf/my_robot.urdf" />
+	<param name="use_gui" value="True"/>
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+	<node name="rviz" pkg="rviz" type="rviz"/>
+</launch>
