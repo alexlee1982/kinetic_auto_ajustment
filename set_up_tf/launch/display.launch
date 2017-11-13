@@ -1,7 +1,8 @@
 <launch>
-	<param name="robot_description" textfile="/home/alex/catkin_ws/src/set_up_tf/urdf/my_robot.urdf" />
+	<param name="robot_description" textfile="/home/a/catkin_ws/src/set_up_tf/urdf/my_robot.urdf" />
 	<param name="use_gui" value="True"/>
 	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
-	<node name="control_my_robot" pkg="r2d2" type="controller"/>
+	<node name="control_my_robot" pkg="set_up_tf" type="controller"/>
+	<!--<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>-->
 	<node name="rviz" pkg="rviz" type="rviz"/>
 </launch>

@@ -94,7 +94,7 @@ int main(int argc,char ** argv)
 		loop_rate.sleep();
 		if(count>=100)
 		{
-			ROS_INFO("joint_6 position: x=%f y=%f z=%f ",base_point.pose.position.x,base_point.pose.position.y,base_point.pose.position.z);
+			ROS_INFO("joint_6 position: x=%f y=%f z=%f ",base_point.pose.position.x*1000,base_point.pose.position.y*1000,base_point.pose.position.z*1000);
 			count=0;
 		}
 	}

@@ -121,7 +121,8 @@ include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
 )
-
+include_directories(src/demo)
+include_directories(src/demo/usrtask)
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/set_up_tf.cpp
@@ -138,7 +139,7 @@ include_directories(
 # add_executable(${PROJECT_NAME}_node src/set_up_tf_node.cpp)
 add_executable(setup_tf_publisher src/setup_tf_publisher.cpp)
 add_executable(setup_tf_listener src/setup_tf_listener.cpp)
-
+add_executable(controller src/controllMyRobot.cpp src/demo/usrtask/usr_motion_api.c src/demo/_posemath.c src/demo/pumakin.c)
 
 
 ## Rename C++ executable without prefix
@@ -157,7 +158,7 @@ add_executable(setup_tf_listener src/setup_tf_listener.cpp)
 # )
 target_link_libraries(setup_tf_publisher ${catkin_LIBRARIES})
 target_link_libraries(setup_tf_listener ${catkin_LIBRARIES})
-
+target_link_libraries(controller ${catkin_LIBRARIES})
 
 
 

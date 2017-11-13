@@ -1,24 +1,4 @@
-<?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="myFirst">
-
-	<xacro:property name="PI" value="3.1415926" />
-	<xacro:property name="dgree" value="${PI/180}" />
-	<xacro:property name="MM" value="0.001" />
-	<xacro:property name="D_th1" value="${0.1*dgree}" />
-	<xacro:property name="D_th2" value="${0.2*dgree}" />
-	<xacro:property name="D_th3" value="${0.3*dgree}" />
-	<xacro:property name="D_th4" value="${0.4*dgree}" />
-	<xacro:property name="D_th5" value="${0.5*dgree}" />
-	<xacro:property name="D_th6" value="${0.6*dgree}" />
-
-
-	<xacro:property name="D_L1" value="${0.1*MM}" />
-	<xacro:property name="D_L2" value="${0.2*MM}" />
-	<xacro:property name="D_L3" value="${0.3*MM}" />
-	<xacro:property name="D_L4" value="${0.4*MM}" />
-	<xacro:property name="D_L5" value="${0.5*MM}" />
-
-	
+<robot name= "myFirst">
 	<link name="base_link">
 		<visual>
 			<geometry>
@@ -104,14 +84,14 @@
 		<parent link="base_link"/>
 		<child link="link_1"/>
 		<limit effort="100" velocity="180" lower="-3.14" upper="3.14"/>
-		<origin xyz="0 0 0.1" rpy="0 0 ${D_th1}"/>
+		<origin xyz="0 0 0.1" rpy="0 0 0"/>
 		<axis xyz="0 0 1"/>
 	</joint>
 	<joint name="joint_2" type="revolute">
 		<parent link="link_1"/>
 		<child link="link_2"/>
 		<limit effort="100" velocity="180" lower="-3.14" upper="3.14"/>
-		<origin xyz="${0.1+D_L1} 0 0" rpy="${-PI/2} ${D_th2} 0"/>
+		<origin xyz="0.1 0 0" rpy="-1.57 0 0"/>
 		<axis xyz="0 0 1"/>
 	</joint>
 
@@ -119,7 +99,7 @@
 		<parent link="link_2"/>
 		<child link="link_3"/>
 		<limit effort="100" velocity="180" lower="-3.14" upper="3.14"/>
-		<origin xyz="0 ${-0.3-D_L2} 0" rpy="${PI} 0 ${-PI/2-D_th3}"/>
+		<origin xyz="0 -0.3 0" rpy="3.14 0 -1.57"/>
 		<axis xyz="0 0 1"/>
 	</joint>
 
@@ -127,7 +107,7 @@
 		<parent link="link_3"/>
 		<child link="link_4"/>
 		<limit effort="100" velocity="180" lower="-3.14" upper="3.14"/>
-		<origin xyz="${0.02+D_L3} 0 0" rpy="${-PI/2} ${D_th4} 0"/>
+		<origin xyz="0.02 0 0" rpy="-1.57 0 0"/>
 		<axis xyz="0 0 1"/>
 	</joint>
 
@@ -135,16 +115,15 @@
 		<parent link="link_4"/>
 		<child link="link_5"/>
 		<limit effort="100" velocity="180" lower="-3.14" upper="3.14"/>
-		<origin xyz="0 0 ${-0.3+D_L4}" rpy="${PI/2} -${D_th5} 0"/>
+		<origin xyz="0 0 -0.3" rpy="1.57 0 0"/>
 		<axis xyz="0 0 1"/>
 	</joint>
 	<joint name="joint_6" type="revolute">
 		<parent link="link_5"/>
 		<child link="link_6"/>
 		<limit effort="100" velocity="180" lower="-3.14" upper="3.14"/>
-		<origin xyz="0 ${-0.1+D_L5} 0" rpy="${PI/2} -${D_th6} 0"/>
+		<origin xyz="0 -0.1 0" rpy="1.57 0 0"/>
 		<axis xyz="0 0 1"/>
 	</joint>
-
-
+	
 </robot>
