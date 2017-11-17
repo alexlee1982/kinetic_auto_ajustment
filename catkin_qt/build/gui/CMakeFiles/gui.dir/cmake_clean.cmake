@@ -1,0 +1,43 @@
+file(REMOVE_RECURSE
+  "qrc_images.cxx"
+  "ui_main_window.h"
+  "include/gui/moc_main_window.cxx"
+  "include/gui/moc_qnode.cxx"
+  "CMakeFiles/gui.dir/src/F_J_z.cpp.o"
+  "CMakeFiles/gui.dir/src/cosd.cpp.o"
+  "CMakeFiles/gui.dir/src/calculate_the_deltaq_rtwutil.cpp.o"
+  "CMakeFiles/gui.dir/src/mldivide.cpp.o"
+  "CMakeFiles/gui.dir/src/sind.cpp.o"
+  "CMakeFiles/gui.dir/src/main_window.cpp.o"
+  "CMakeFiles/gui.dir/src/xnrm2.cpp.o"
+  "CMakeFiles/gui.dir/src/xgeqp3.cpp.o"
+  "CMakeFiles/gui.dir/src/rtGetInf.cpp.o"
+  "CMakeFiles/gui.dir/src/main.cpp.o"
+  "CMakeFiles/gui.dir/src/rt_nonfinite.cpp.o"
+  "CMakeFiles/gui.dir/src/F_J_x.cpp.o"
+  "CMakeFiles/gui.dir/src/qnode.cpp.o"
+  "CMakeFiles/gui.dir/src/calculate_the_deltaq_terminate.cpp.o"
+  "CMakeFiles/gui.dir/src/xzlarfg.cpp.o"
+  "CMakeFiles/gui.dir/src/calculate_the_deltaq_initialize.cpp.o"
+  "CMakeFiles/gui.dir/src/F_T16N.cpp.o"
+  "CMakeFiles/gui.dir/src/moveandrecord.cpp.o"
+  "CMakeFiles/gui.dir/src/rtGetNaN.cpp.o"
+  "CMakeFiles/gui.dir/src/ixamax.cpp.o"
+  "CMakeFiles/gui.dir/src/xzlarf.cpp.o"
+  "CMakeFiles/gui.dir/src/xswap.cpp.o"
+  "CMakeFiles/gui.dir/src/F_J_y.cpp.o"
+  "CMakeFiles/gui.dir/src/calculate_the_deltaq.cpp.o"
+  "CMakeFiles/gui.dir/qrc_images.cxx.o"
+  "CMakeFiles/gui.dir/include/gui/moc_main_window.cxx.o"
+  "CMakeFiles/gui.dir/include/gui/moc_qnode.cxx.o"
+  "CMakeFiles/gui.dir/src/usr_motion_api.c.o"
+  "CMakeFiles/gui.dir/src/_posemath.c.o"
+  "CMakeFiles/gui.dir/src/pumakin.c.o"
+  "/home/a/catkin_qt/devel/lib/gui/gui.pdb"
+  "/home/a/catkin_qt/devel/lib/gui/gui"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang C CXX)
+  include(CMakeFiles/gui.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

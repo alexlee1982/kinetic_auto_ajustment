@@ -1,0 +1,8 @@
+prefix=/home/a/catkin_qt/install
+
+Name: gui-1
+Description: Description of gui-1
+Version: 0.1.0
+Cflags: 
+Libs: -L/home/a/catkin_qt/install/lib 
+Requires: 

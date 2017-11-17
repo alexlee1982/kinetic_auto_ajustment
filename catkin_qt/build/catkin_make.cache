@@ -1,0 +1,2 @@
+gui
+-G CodeBlocks - Unix Makefiles -DCMAKE_BUILD_TYPE=Debug -DCATKIN_DEVEL_PREFIX=/home/a/catkin_qt/devel -DCMAKE_INSTALL_PREFIX=/home/a/catkin_qt/install
